@@ -4,6 +4,12 @@ let producto;
 let decision;
 let seguirComprando = true;
 
+const interes3 = 0.1;
+const interes6 = 0.35;
+const interes12 = 0.7;
+
+const productosArray = [];
+
 class NewProduct {
   constructor(id, name, price) {
     this.id = id;
@@ -13,16 +19,21 @@ class NewProduct {
 }
 
 const fanal = new NewProduct(1, "Fanal", 500);
+productosArray.push(fanal);
 const aromatizante = new NewProduct(2, "Aromatizante", 600);
+productosArray.push(aromatizante);
 const flotante = new NewProduct(3, "Flotante", 400);
+productosArray.push(flotante);
 const difusor = new NewProduct(4, "Difusor", 1000);
+productosArray.push(difusor);
 const esencias = new NewProduct(5, "Esencias", 200);
+productosArray.push(esencias);
 const tapiz = new NewProduct(6, "Tapiz", 1200);
+productosArray.push(tapiz);
 const mantel = new NewProduct(7, "Mantel", 900);
+productosArray.push(mantel);
 
-const interes3 = 0.1;
-const interes6 = 0.35;
-const interes12 = 0.7;
+console.log(productosArray[0].price);
 
 while (seguirComprando === true || producto === 0) {
   categoria = parseInt(prompt("Escoja una categoría:\n 1 - Velas\n 2 - Aromatizantes\n 3 - Textiles\n 0 - Salir"));
@@ -35,13 +46,7 @@ while (seguirComprando === true || producto === 0) {
       seguirComprando = false;
     }
     while (seguirComprando === true) {
-      if (producto === fanal.id) {
-        total = total + fanal.price;
-      } else if (producto === aromatizante.id) {
-        total = total + aromatizante.price;
-      } else if (producto === flotante.id) {
-        total = total + flotante.price;
-      }
+      total = total + productosArray[producto - 1].price;
       decision = parseInt(prompt(`El total gastado hasta el momento es de $ ${total}.\nQuiere seguir comprando?\n 1 - SI\n 2 - NO`));
       if (decision === 1) {
         producto = parseInt(prompt("Escoja un producto:\n 1 - Fanal ($500)\n 2 - Aromatizante ($600)\n 3 - Flotante ($400)\n 0 - Volver al menú anterior"));
@@ -64,11 +69,7 @@ while (seguirComprando === true || producto === 0) {
       seguirComprando = false;
     }
     while (seguirComprando === true) {
-      if (producto + 3 === difusor.id) {
-        total = total + difusor.price;
-      } else if (producto + 3 === esencias.id) {
-        total = total + esencias.price;
-      }
+      total = total + productosArray[producto + 2].price;
       decision = parseInt(prompt(`El total gastado hasta el momento es de $ ${total}.\nQuiere seguir comprando?\n 1 - SI\n 2 - NO`));
       if (decision === 1) {
         producto = parseInt(prompt("Escoja un producto:\n 1 - Difusor ($1000)\n 2 - Esencias ($200)\n 0 - Volver al menú anterior"));
@@ -91,11 +92,7 @@ while (seguirComprando === true || producto === 0) {
       seguirComprando = false;
     }
     while (seguirComprando === true) {
-      if (producto + 5 === tapiz.id) {
-        total = total + tapiz.price;
-      } else if (producto + 5 === mantel.id) {
-        total = total + mantel.price;
-      }
+      total = total + productosArray[producto + 4].price;
       decision = parseInt(prompt(`El total gastado hasta el momento es de $ ${total}.\nQuiere seguir comprando?\n 1 - SI\n 2 - NO`));
       if (decision === 1) {
         producto = parseInt(prompt("Escoja un producto:\n 1 - Tapiz ($1200)\n 2 - Mantel ($900)\n 0 - Volver al menú anterior"));
